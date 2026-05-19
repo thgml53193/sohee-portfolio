@@ -50,8 +50,7 @@ section {
 /* hero top */
 #hero {
   height: 100vh;
-  background-color: #222;
-  color: #fff;
+  background-color: #fb5842;
 }
 #hero .top {
   padding: 1.5rem 3rem;
@@ -94,7 +93,6 @@ section {
 }
 #hero h1 {
   font-size: 16rem;
-  color: #fb5842;
   display: flex;
   gap: 4rem;
   justify-content: center;
@@ -135,6 +133,7 @@ section {
   width: 50%;
   height: 100vh;
   line-height: 2;
+  background-color: #f2f2eb;
 }
 #about h3 {
   margin-top: 2rem;
@@ -180,7 +179,6 @@ section {
 #about article.certificate ul li {
   width: calc((100% - 0.5rem) / 2);
 }
-
 #about .photo-center {
   width: 300px;
   height: 50vh;
@@ -260,10 +258,29 @@ section {
   transform: translate(-50%, -50%);
 }
 #clone-wrap .preview-box {
+  width: 100%;
   height: 90%;
-  background-color: #fff;
   z-index: 5;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 5px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  position: relative;
 }
+#clone-wrap .preview-box img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateY(0%); /* 출발선 정해주기 */
+}
+#clone-wrap .preview-box.active img {
+  transform: translateY(calc(-100% + 72vh));
+  transition: transform 7s linear;
+}
+
 #clone-wrap button {
   width: 140px;
   height: 50px;
@@ -417,13 +434,29 @@ section {
   transform: translateY(40%);
   z-index: 3;
 }
-.card-box .close-text {
-  position: absolute;
+/* 1. 기본 상태: 처음부터 화면 우측 상단(fixed)에 투명하게 대기 시킵니다. */
+.card-box .custom-close-cursor {
+  position: fixed; /* ★ absolute에서 fixed로 변경하여 위치 튐 방지 */
   right: 40px;
   top: 40px;
   font-size: 1.4rem;
   opacity: 0;
-  transition: 0.3s;
+  z-index: 10000; /* ★ 화면 가장 위에 오도록 active(9999)보다 높게 세팅 */
+
+  /* 디자인 감성 채우기 */
+  padding: 10px 20px;
+  border: 1px solid #222;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  color: #222;
+}
+/* 2. active 상태: 카드가 화면을 꽉 채웠을 때 투명도만 1로 켜줍니다. */
+.card-box > div.active .custom-close-cursor {
+  opacity: 1;
+  transition: opacity 0.4s ease 0.4s;
 }
 .card-box h3 {
   display: flex;
@@ -438,6 +471,9 @@ section {
   letter-spacing: 0;
 }
 /* active */
+#design-wrap:has(.card-box > div.active) .card-box {
+  transform: none !important;
+}
 .card-box > div.active {
   position: fixed;
   inset: 0;
@@ -446,11 +482,15 @@ section {
   z-index: 9999;
   border-top: none;
   border-radius: 0;
-  padding: 4rem;
+  padding: 4rem 8rem;
   overflow-y: auto;
   margin: 0;
-  transform: none !important;
+  /* transform: none !important; */
+  transform: translateY(0) !important;
 }
+/* CSS 공식 스펙에 따르면, 어떤 요소에 position: fixed;를 주면 브라우저의 화면(Viewport)을 기준으로 위치를 잡아야 합니다.
+
+하지만 그 요소의 조상(부모) 중에 transform 속성을 가진 요소가 단 하나라도 있으면, fixed는 화면이 아니라 그 transform이 걸려있는 부모 박스를 기준으로 갇혀버리게 됩니다. */
 .card-box > div.active h3 {
   font-size: 15rem;
   justify-content: center;
@@ -494,9 +534,13 @@ section {
   align-items: center;
 }
 .img-wrap {
-  width: 550px;
-  height: 300px;
-  background: #fb5842;
+  width: 600px;
+  height: 400px;
+}
+.img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* playground /////////////////////////////////////////////////// */

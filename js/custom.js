@@ -21,6 +21,13 @@ cards.forEach((card) => {
   });
 });
 
+window.addEventListener("load", () => {
+  const previewBoxes = document.querySelectorAll(".preview-box");
+  previewBoxes.forEach((box) => {
+    box.classList.remove("active"); // 혹시 남아있을지 모를 active 클래스 초기화
+  });
+});
+
 // gsap - 클론 영역 스크롤 시 오-> 왼 방향으로 타이틀, clone01, clone02 순으로 들어옴
 const clone = gsap.timeline({
   scrollTrigger: {
@@ -53,10 +60,18 @@ clone
       opacity: 0,
       duration: 1.2,
       ease: "power2.out",
+
+      onComplete: () => {
+        setTimeout(() => {
+          document
+            .querySelector(".clone01 .preview-box")
+            .classList.add("active");
+        }, 800);
+      },
     },
     "-=0.8",
   )
-  .to({}, { duration: 2 })
+  .to({}, { duration: 1.5 })
 
   // 클론02 페이지 배경이 옆에서 들어옴
   .to(".clone02", { x: "0%", duration: 2, ease: "linear" }, "+=1")
@@ -68,10 +83,18 @@ clone
       opacity: 0,
       duration: 1.2,
       ease: "power2.out",
+
+      onComplete: () => {
+        setTimeout(() => {
+          document
+            .querySelector(".clone02 .preview-box")
+            .classList.add("active");
+        }, 800);
+      },
     },
     "-=0.8",
   )
-  .to({}, { duration: 2 });
+  .to({}, { duration: 1.5 });
 
 //gsap - 디자인 타이틀 영역 스크롤 시 아래 -> 위 방향으로 디자인 페이지 올라옴
 const design = gsap.timeline({
@@ -93,7 +116,7 @@ design
     ease: "power3.out",
     stagger: 0.2,
   })
-  .to({}, { duration: 2 })
+  .to({}, { duration: 1 })
 
   // 디자인 페이지 올라옴
   .to(
@@ -139,6 +162,7 @@ const jsText = gsap.timeline({
     scrub: 1,
   },
 });
+
 jsText
   .from(".big-text-box .java", {
     y: "40vh",
@@ -178,51 +202,7 @@ jsText
     "-=1",
   );
 
-// gsap - 괄호부분 텍스트 자동 변경
-// 1. 바뀔 텍스트 배열 만들기
-// const textItems = ["contact", "감사합니다"];
-// let currentIndex = 0;
-
-// 2. GSAP 타임라인 생성
-// function changeText() {
-//   const nextIndex = (currentIndex + 1) % textItems.length;
-
-//   gsap.to(".thank", {
-//     duration: 0.5,
-//     y: -20, // 위로 사라짐
-//     opacity: 0,
-//     onComplete: () => {
-//       // 사라진 직후 텍스트 교체
-//       document.querySelector(".thank").textContent = textItems[nextIndex];
-//       currentIndex = nextIndex;
-
-//       // 아래에서 위로 나타남
-//       gsap.fromTo(
-//         ".thank",
-//         { y: 20, opacity: 0 },
-//         { y: 0, opacity: 1, duration: 0.5 },
-//       );
-//     },
-//   });
-// }
-
-// // 3. 2초마다 실행 (반복)
-// setInterval(changeText, 2500);
-
-// const textItems = ["contact", "감사합니다", "Thank you", "연락주세요"];
-// let currentIndex = 0;
-
-// function changeText() {
-//   // 1. 다음 보여줄 글자의 번호 계산 (순환 로직)
-//   currentIndex = (currentIndex + 1) % textItems.length;
-
-//   // 2. 클래스가 'thank'인 요소의 텍스트를 즉시 교체
-//   document.querySelector(".thank").textContent = textItems[currentIndex];
-// }
-
-// // 2초(2000ms)마다 함수 실행
-// setInterval(changeText, 2000);
-
+//gsap - contact 텍스트 변경
 const textItems = ["contact", "감사합니다."];
 let currentIndex = 0;
 
