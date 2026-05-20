@@ -623,6 +623,15 @@ section {
   background-color: #fb5842;
   /* background-image: url(img/movie.jpg); */
 }
+#playground .play-item li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+}
 #playground .weather-bg {
   background-image: url(img/weather.jpg);
 }
