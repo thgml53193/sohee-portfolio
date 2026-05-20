@@ -620,11 +620,16 @@ section {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: url(img/movie.jpg);
+  background-color: #fb5842;
+  /* background-image: url(img/movie.jpg); */
+}
+#playground .weather-bg {
+  background-image: url(img/weather.jpg);
 }
 #playground .movie-bg {
   background-image: url(img/movie.jpg);
 }
+
 #playground .play-item a {
   display: block;
   width: 100%;
