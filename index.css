@@ -38,6 +38,17 @@ body {
   font-family: "Pretendard";
 }
 
+.intro-mask {
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  z-index: 9999;
+}
 section {
   width: 100%;
   height: 100vh;
@@ -203,7 +214,8 @@ section {
 #clone-wrap .title {
   width: 100%;
   height: 100vh;
-  background-color: #fb5842;
+  background-color: #f2f2eb;
+  color: #fb5842;
   position: absolute;
   top: 0;
   left: 0;
@@ -230,7 +242,7 @@ section {
   will-change: transform; /* 애니메이션 성능 최적화 */
 }
 #clone-wrap .title .stroke {
-  -webkit-text-stroke: 2px #222;
+  -webkit-text-stroke: 2px #fb5842;
   color: transparent;
 }
 #clone-wrap .title p {
@@ -394,7 +406,6 @@ section {
   width: 90%;
   margin: 0 auto;
   font-size: 2rem;
-  font-family: "Pretendard";
 }
 /* design-wrap */
 .card-box {
@@ -422,16 +433,16 @@ section {
 }
 .card-box .design01 {
   border-radius: 2rem 2rem 0 0;
-  transform: translateY(10%);
+  transform: translateY(5%);
   z-index: 1;
   border-top: none;
 }
 .card-box .design02 {
-  transform: translateY(25%);
+  transform: translateY(20%);
   z-index: 2;
 }
 .card-box .design03 {
-  transform: translateY(40%);
+  transform: translateY(35%);
   z-index: 3;
 }
 /* 1. 기본 상태: 처음부터 화면 우측 상단(fixed)에 투명하게 대기 시킵니다. */
@@ -474,6 +485,7 @@ section {
 #design-wrap:has(.card-box > div.active) .card-box {
   transform: none !important;
 }
+/* 최신 CSS 문법인 :has() 개념이 들어가 있어 조금 낯설 수 있지만, 한 줄로 요약하면 "카드가 풀스크린으로 열렸을 때(active), 부모 박스가 흔들리거나 찌그러지지 않도록 고정해 주는 안전장치"입니다. */
 .card-box > div.active {
   position: fixed;
   inset: 0;
@@ -586,25 +598,37 @@ section {
 /* play-item */
 #playground .play-item {
   width: 80%;
+  height: fit-content;
   display: flex;
   align-items: center;
   gap: 2rem;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-left: -40%; /* 너비(80%)의 절반 */
-  margin-top: -200px;
-  /* transform: translate(-50%, -50%) translateY(100px); */
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   opacity: 0;
   transform: scale(1.2);
   pointer-events: none;
 }
 #playground .play-item li {
   width: calc((100% - 4rem) / 3);
-  height: 600px;
-  background-color: #fb5842;
+  aspect-ratio: 5 / 7;
   border-radius: 2rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url(img/movie.jpg);
+}
+#playground .movie-bg {
+  background-image: url(img/movie.jpg);
+}
+#playground .play-item a {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 /* contact /////////////////////////////////////////////////// */
 #contact {

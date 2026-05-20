@@ -1,3 +1,10 @@
+gsap.to(".intro-mask", {
+  yPercent: -100,
+  duration: 1.8,
+  ease: "power4.inOut",
+  delay: 0.5,
+});
+
 // 디자인 페이지에 카드 클릭했을 때 풀스크린으로 열리고 닫힘
 const cards = document.querySelectorAll(".card-box > div");
 
@@ -152,7 +159,7 @@ design
   })
   .to({}, { duration: 2 });
 
-// 자바/ 스크립트 텍스트가 중앙에서 제자리로
+// 자바 / 스크립트 텍스트가 중앙에서 제자리로
 const jsText = gsap.timeline({
   scrollTrigger: {
     trigger: "#playground",
@@ -187,7 +194,6 @@ jsText
   .to(
     "#playground .play-item",
     {
-      y: -100, // 아주 살짝만 아래에서
       scale: 1, // 약간 작았다가 커지면서 (원근감)
       rotationX: 15, // 살짝 뒤로 누웠다가 세워지는 느낌 (입체감)
       opacity: 1, // 서서히 나타남
