@@ -42,78 +42,86 @@ body {
   width: 100%;
   height: 100vh;
   background-color: #000;
-
   position: fixed;
   left: 0;
   top: 0;
-
   z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fb5842;
+  display: none;
 }
+.intro-mask p {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.intro-mask p span {
+  font-size: clamp(24px, 2vw, 32px);
+  line-height: 1.8;
+  letter-spacing: -0.02em;
+}
+
+.intro-mask .char {
+  display: inline-block;
+}
+
 section {
   width: 100%;
   height: 100vh;
-  overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 /* hero /////////////////////////////////////////////////// */
 /* hero top */
 #hero {
   height: 100vh;
   background-color: #fb5842;
+  position: relative;
 }
 #hero .top {
-  padding: 1.5rem 3rem;
-  line-height: 1.6;
-}
-#hero .top > div {
+  width: 95%;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  line-height: 1.6;
+  color: #f2f2eb;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
 }
 #hero .top .contact {
   text-align: right;
-}
-#hero .slogan {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-  font-size: 1.6rem;
-}
-/* slogan */
-#hero .slogan span {
-  color: #fb5842;
-  font-weight: bold;
 }
 /* hero bottom */
 /* nav */
 #hero nav ul {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 100px;
-  padding: 0 3rem;
+  margin-bottom: 20vh;
   font-size: 2rem;
   font-weight: bold;
 }
 #hero .bottom {
-  /* border: 1px solid red; */
+  width: 95%;
   position: absolute;
+  left: 50%;
   bottom: 0;
-  width: 100%;
+  transform: translateX(-50%);
+  padding-bottom: 2rem;
 }
 #hero h1 {
-  font-size: 16rem;
+  font-size: clamp(20px, 9vw, 180px);
+  white-space: nowrap; /* 글자가 중간에 끊겨서 아래로 떨어지지 않도록 방지 */
   display: flex;
-  gap: 4rem;
   justify-content: center;
-  padding: 0 2rem;
   font-family: "MonumentExtended", sans-serif;
-  letter-spacing: -0.05em;
-}
-#hero h1 .left-word {
-  display: inline-block;
-  padding-right: 2rem;
+  letter-spacing: -0.03em;
+  line-height: 1;
 }
 
 /* about /////////////////////////////////////////////////// */
@@ -123,14 +131,15 @@ section {
   display: flex;
   flex-direction: row;
   position: relative;
+  background-color: #f2f2eb;
 }
 #about .photo-bg {
   width: 50%;
   height: 100vh;
+
   background:
     linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url(img/me_bg.jpg) no-repeat bottom / cover;
-  overflow: hidden;
 }
 #about h2 {
   font-size: 8rem;
@@ -142,9 +151,9 @@ section {
 /* 자기 소개 요약 */
 #about .detail {
   width: 50%;
-  height: 100vh;
-  line-height: 2;
+  line-height: 1.8;
   background-color: #f2f2eb;
+  position: relative;
 }
 #about h3 {
   margin-top: 2rem;
@@ -153,50 +162,39 @@ section {
   margin-bottom: 3rem;
 }
 #about .detail > div {
-  width: 50%;
-  height: 100%;
-  margin: 0 auto;
-  padding: 3rem 0;
+  width: 70%;
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
 }
 #about .info-item {
   display: flex;
+  margin-bottom: 0.5rem;
 }
 #about .info-item dt {
-  width: 80px;
+  width: 90px;
   flex-shrink: 0;
+  font-weight: bold;
+}
+#about .info-item dd {
+  margin-bottom: 0.2rem;
 }
 /* article 스킬 */
-#about article.skill > ul > li {
-  display: flex;
+#about article.skill ul li {
+  font-size: 1.8rem;
+  letter-spacing: -0.01em;
 }
-#about article.skill > ul > li span {
-  display: inline-block;
-  width: 150px;
-}
-#about .circle-gauge i {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border: 1px solid #222;
-  border-radius: 50%;
-  margin-right: 5px;
-}
-/* article 자격증 */
-#about article.certificate ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-#about article.certificate ul li {
-  width: calc((100% - 0.5rem) / 2);
-}
+
 #about .photo-center {
-  width: 300px;
-  height: 50vh;
+  width: 280px;
+  height: 45vh;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  z-index: 10;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 #about .photo-center img {
   width: 100%;
@@ -227,7 +225,7 @@ section {
   bottom: 8rem;
 }
 #clone-wrap .title h2 {
-  font-size: 12rem;
+  font-size: clamp(24px, 9vw, 180px);
   font-family: "MonumentExtended", sans-serif;
   letter-spacing: -0.05em;
   line-height: 1;
@@ -256,10 +254,9 @@ section {
   height: 100vh;
   background: url(img/visual04.jpg) no-repeat center / cover;
   position: absolute;
-  top: 0;
   left: 0;
+  top: 100vh;
   z-index: 2;
-  transform: translateX(100%);
 }
 #clone-wrap .preview {
   width: 80%;
@@ -332,10 +329,9 @@ section {
   height: 100vh;
   background: url(img/main_visual_03.jpg) no-repeat center / cover;
   position: absolute;
-  top: 0;
   left: 0;
+  top: 100vh;
   z-index: 3;
-  transform: translateX(100%);
 }
 
 /* design /////////////////////////////////////////////////// */
@@ -362,7 +358,7 @@ section {
   bottom: 8rem;
 }
 #design-wrap .title h2 {
-  font-size: 12rem;
+  font-size: clamp(24px, 9vw, 180px);
   font-family: "MonumentExtended", sans-serif;
   letter-spacing: -0.05em;
   line-height: 1;
@@ -477,10 +473,11 @@ section {
   font-size: 10rem;
   letter-spacing: -0.02em;
 }
-.card-box span {
+.card-box h3 span {
   font-size: 1.6rem;
   letter-spacing: 0;
 }
+
 /* active */
 #design-wrap:has(.card-box > div.active) .card-box {
   transform: none !important;
@@ -521,23 +518,123 @@ section {
 /* project-info */
 .info-container {
   display: flex;
-  gap: 10rem;
-  align-items: flex-start;
+  justify-content: space-between;
   margin-top: 50px;
-  /* border: 1px solid red; */
 }
+
 /* project-info */
 .project-info {
   width: 60%;
-  height: 100%;
-  /* border: 1px solid red; */
   display: flex;
-  gap: 5rem;
   flex-direction: column;
-  /* justify-content: space-between; */
-  font-size: 2rem;
-  line-height: 1.6;
+  justify-content: space-between;
+  font-size: 1.8rem;
 }
+.card-box .project-info .top span {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  display: block;
+}
+.project-info .spec-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.project-info .spec-item dt {
+  width: 90px;
+  flex-shrink: 0;
+  font-weight: bold;
+}
+.project-info .spec-item dd {
+  display: flex;
+  gap: 2rem;
+}
+.project-info .spec-item dd span {
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+}
+.project-info .spec-item dd span::before {
+  content: "";
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.4rem;
+  margin-right: 0.8rem;
+}
+.project-info .spec-item dd .by::before {
+  background-color: #fdfbdd;
+  border: 1px solid #eae7cc;
+}
+.project-info .spec-item dd .wh::before {
+  background-color: #ffffff;
+  border: 1px solid #eae7cc;
+}
+.project-info .spec-item dd .or::before {
+  background-color: #f38b5e;
+  border: 1px solid #eae7cc;
+}
+.project-info .spec-item dd .kb::before {
+  background-color: #917b6f;
+  border: 1px solid #eae7cc;
+}
+.project-info .btn-group {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.project-info button {
+  width: 140px;
+  height: 50px;
+  border: none;
+  border-radius: 50px;
+  transition: 0.3s;
+  z-index: 10;
+}
+.project-info button a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 2rem;
+  font-size: 1.8rem;
+}
+.project-info button i {
+  transform: rotate(-45deg);
+  transition: 0.3s;
+}
+.project-info button.btn-secondary {
+  background-color: transparent;
+  color: #555555;
+  border: 1px solid #cccccc;
+}
+.project-info button.btn-secondary:hover {
+  background-color: #ffffff;
+  border-color: #222222;
+}
+.project-info button:hover i {
+  transform: rotate(0deg);
+}
+/* 카페 페이지 버튼 호버(버터옐로우) */
+.project-info button.cafe {
+  background-color: #fdfbdd;
+  border: 1px solid #eae7cc;
+}
+.project-info button.cafe:hover {
+  background-color: #f7f3c5;
+}
+.project-info button.foundation {
+  background-color: #f38b5e;
+  border: 1px solid #f38b5e;
+  color: #ffffff;
+}
+.project-info button.foundation:hover {
+  background-color: #e07548;
+  border-color: #e07548;
+}
+
 /* project-img */
 .project-img {
   width: 40%;

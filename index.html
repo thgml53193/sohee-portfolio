@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -14,24 +15,24 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div class="intro-mask"></div>
+    <div class="intro-mask">
+      <p data-splitting>
+        <span>디자이너의 시각적인 언어를</span>
+        <span>브라우저가 가장 좋아하는 코드로 통역하는</span>
+        <span>명소희입니다</span>
+      </p>
+    </div>
     <!-- hero -->
     <section id="hero">
       <div class="top">
-        <div>
-          <div class="left">
-            <p>2026 portfolio</p>
-            <p>명소희</p>
-          </div>
-          <div class="contact">
-            <p>m. thgml53193@gmail.com</p>
-            <p>p. 010.9629.3502</p>
-          </div>
+        <div class="left">
+          <p>2026 portfolio</p>
+          <p>명소희</p>
         </div>
-        <p class="slogan">
-          <span>ㅁ</span>ㅏ크업으로 단단한 구조를 세우고,<span>ㅅ</span>ㅣ선이
-          머무는 감각을 더해,<span>ㅎ</span>ㅕㄴ실로 구현합니다.
-        </p>
+        <div class="contact">
+          <p>m. thgml53193@gmail.com</p>
+          <p>p. 010.9629.3502</p>
+        </div>
       </div>
       <div class="bottom">
         <nav>
@@ -42,10 +43,7 @@
             <li><a href="#contact">contact</a></li>
           </ul>
         </nav>
-        <h1>
-          <span class="left-word">web</span>
-          <span class="right-word">publisher</span>
-        </h1>
+        <h1>web publisher</h1>
       </div>
     </section>
 
@@ -58,14 +56,13 @@
         <div>
           <!-- 자기 소개 요약 -->
           <article>
-            <!-- 슬로건 -->
-            <h3>Profile</h3>
-            <p class="slogan">
-              임ㅅ미이밋미심심이미임릶ㅇ니ㅓ 하는 명소희입니다.
-            </p>
             <!-- 개인 정보 및 학력 -->
             <div class="info-list-wrap">
               <dl class="info-list">
+                <div class="info-item">
+                  <dt>이름</dt>
+                  <dd>명소희</dd>
+                </div>
                 <div class="info-item">
                   <dt>생년월일</dt>
                   <dd>1993. 05. 31</dd>
@@ -98,34 +95,12 @@
             <h3>skill</h3>
             <!-- li로 기술 아이콘 나열 -->
             <ul>
-              <li>
-                <span>Html/Css</span>
-                <div class="circle-gauge level-3"><i></i><i></i><i></i></div>
-              </li>
-              <li>
-                <span>Jquery/Javascript</span>
-                <div class="circle-gauge level-3"><i></i><i></i><i></i></div>
-              </li>
-              <li>
-                <span>GSAP</span>
-                <div class="circle-gauge level-3"><i></i><i></i><i></i></div>
-              </li>
-              <li>
-                <span>Photoshop</span>
-                <div class="circle-gauge level-3"><i></i><i></i><i></i></div>
-              </li>
-              <li>
-                <span>Illustrator</span>
-                <div class="circle-gauge level-3"><i></i><i></i><i></i></div>
-              </li>
-              <li>
-                <span>Figma</span>
-                <div class="circle-gauge level-3"><i></i><i></i><i></i></div>
-              </li>
-              <li>
-                <span>Premiere Pro</span>
-                <div class="circle-gauge level-3"><i></i><i></i><i></i></div>
-              </li>
+              <li>Html / Css</li>
+              <li>Jquery / Javascript</li>
+              <li>GSAP</li>
+              <li>Photoshop</li>
+              <li>Illustrator</li>
+              <li>Figma</li>
             </ul>
           </article>
           <!-- 자격증 -->
@@ -233,16 +208,17 @@
               <div class="project-info">
                 <div class="top">
                   <p>
-                    디자인 컨셉 : Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Qui recusandae enim rerum cupiditate.
+                    <span>디자인 컨셉</span> Lorem ipsum dolor sit amet
+                    consectetur adipisicing elit. Qui recusandae enim rerum
+                    cupiditate.
                   </p>
                 </div>
                 <dl class="bottom">
                   <div class="spec-item">
                     <dt>주 색상</dt>
                     <dd>
-                      <span class="color-chip red-orange">#E1341E</span>
-                      <span class="color-chip ivory">#F0EBE3</span>
+                      <span class="by">#FDFBDD</span>
+                      <span class="wh">#FFFFFF</span>
                     </dd>
                   </div>
                   <div class="spec-item">
@@ -262,6 +238,18 @@
                     <dd>기획/디자인/퍼블리싱 100%</dd>
                   </div>
                 </dl>
+                <div class="btn-group">
+                  <button class="btn-primary cafe">
+                    <a href="#">
+                      기획안 <i class="fa-solid fa-arrow-right"></i
+                    ></a>
+                  </button>
+                  <button class="btn-secondary">
+                    <a href="https://thgml53193.github.io/cafedesign/">
+                      GitHub <i class="fa-solid fa-arrow-right"></i
+                    ></a>
+                  </button>
+                </div>
               </div>
               <div class="project-img">
                 <div class="img-wrap">
@@ -277,16 +265,17 @@
               <div class="project-info">
                 <div class="top">
                   <p>
-                    디자인 컨셉 : Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Qui recusandae enim rerum cupiditate.
+                    <span>디자인 컨셉</span> Lorem ipsum dolor sit amet
+                    consectetur adipisicing elit. Qui recusandae enim rerum
+                    cupiditate.
                   </p>
                 </div>
                 <dl class="bottom">
                   <div class="spec-item">
                     <dt>주 색상</dt>
                     <dd>
-                      <span class="color-chip red-orange">#E1341E</span>
-                      <span class="color-chip ivory">#F0EBE3</span>
+                      <span class="or">#f38b5e</span>
+                      <span class="kb">#917b6f</span>
                     </dd>
                   </div>
                   <div class="spec-item">
@@ -306,6 +295,18 @@
                     <dd>기획/디자인/퍼블리싱 100%</dd>
                   </div>
                 </dl>
+                <div class="btn-group">
+                  <button class="btn-primary foundation">
+                    <a href="#">
+                      기획안 <i class="fa-solid fa-arrow-right"></i
+                    ></a>
+                  </button>
+                  <button class="btn-secondary">
+                    <a href="https://thgml53193.github.io/foundationdesign/">
+                      GitHub <i class="fa-solid fa-arrow-right"></i
+                    ></a>
+                  </button>
+                </div>
               </div>
               <div class="img-wrap">
                 <img src="img/image 179.png" alt="임시" />
@@ -319,16 +320,17 @@
               <div class="project-info">
                 <div class="top">
                   <p>
-                    디자인 컨셉 : Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit.
+                    <span>디자인 컨셉</span> Lorem ipsum dolor sit amet
+                    consectetur adipisicing elit. Qui recusandae enim rerum
+                    cupiditate.
                   </p>
                 </div>
                 <dl class="bottom">
                   <div class="spec-item">
                     <dt>주 색상</dt>
                     <dd>
-                      <span class="color-chip red-orange">#E1341E</span>
-                      <span class="color-chip ivory">#F0EBE3</span>
+                      <span class="or">#f38b5e</span>
+                      <span class="kb">#917b6f</span>
                     </dd>
                   </div>
                   <div class="spec-item">
@@ -348,6 +350,18 @@
                     <dd>기획/디자인/퍼블리싱 100%</dd>
                   </div>
                 </dl>
+                <div class="btn-group">
+                  <button class="btn-primary foundation">
+                    <a href="#">
+                      기획안 <i class="fa-solid fa-arrow-right"></i
+                    ></a>
+                  </button>
+                  <button class="btn-secondary">
+                    <a href="#">
+                      GitHub <i class="fa-solid fa-arrow-right"></i
+                    ></a>
+                  </button>
+                </div>
               </div>
               <div class="img-wrap">
                 <img src="img/image 182 (1).png" alt="임시" />
@@ -425,6 +439,9 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollToPlugin.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/Observer.min.js"></script>
+
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+
     <script src="js/custom.js"></script>
   </body>
 </html>

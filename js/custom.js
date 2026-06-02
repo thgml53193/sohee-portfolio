@@ -1,39 +1,81 @@
-gsap.to(".intro-mask", {
-  yPercent: -100,
-  duration: 1.8,
-  ease: "power4.inOut",
-  delay: 0.5,
-});
+// 새로고침 시 스크롤을 맨 위로 강제 고정하는 안전장치
+// if (history.scrollRestoration) {
+//   history.scrollRestoration = "manual";
+// }
+// window.scrollTo(0, 0);
 
-// 디자인 페이지에 카드 클릭했을 때 풀스크린으로 열리고 닫힘
-const cards = document.querySelectorAll(".card-box > div");
+Splitting();
 
-cards.forEach((card) => {
-  card.addEventListener("click", () => {
-    // 이미 active 상태면 제거
-    if (card.classList.contains("active")) {
-      card.classList.remove("active");
-    }
+const introTl = gsap.timeline();
 
-    // active 없으면 추가
-    else {
-      // 다른 카드 active 제거
-      cards.forEach((c) => {
-        c.classList.remove("active");
-      });
+introTl
 
-      // 클릭 카드 active 추가
-      card.classList.add("active");
-    }
+  // 쪼개진 글자들(.char)이 아래에서 위로 살짝 올라오며 순서대로 등장
+  .from(".intro-mask .char", {
+    y: 40,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.03,
+    ease: "power2.out",
+    delay: 0.5,
+  })
+
+  .to({}, { duration: 1.5 })
+
+  // 사라질 때도 글자들이 위로 슥 올라가며 투명하게 페이드아웃
+  .to(".intro-mask .char", {
+    opacity: 0,
+    y: -30,
+    duration: 0.4,
+    stagger: 0.01, // 사라질 때는 조금 더 빠르게 쇽 지나가기
+    ease: "power2.in",
+  })
+
+  .to(
+    ".intro-mask",
+    {
+      yPercent: -100,
+      duration: 0.8,
+      ease: "power4.inOut",
+      delay: 1,
+    },
+    "-=0.2",
+  )
+  .from(
+    "#hero h1",
+    {
+      y: 120,
+      opacity: 0,
+      duration: 1.6,
+      ease: "power3.out",
+    },
+    "-=1.2",
+  )
+  .from(
+    "#hero nav ul li",
+    {
+      y: 25,
+      opacity: 0,
+      duration: 0.7,
+      stagger: 0.12,
+      ease: "power2.out",
+    },
+    "-=0.8",
+  )
+  .from(
+    "#hero .top div",
+    {
+      opacity: 0,
+      duration: 0.8,
+      ease: "power1.out",
+    },
+    "-=0.4",
+  )
+  // 완벽한 클릭 버그 방지: 투명해진 마스크를 완전히 없애기
+  .to(".intro-mask", {
+    display: "none",
+    duration: 0,
   });
-});
-
-window.addEventListener("load", () => {
-  const previewBoxes = document.querySelectorAll(".preview-box");
-  previewBoxes.forEach((box) => {
-    box.classList.remove("active"); // 혹시 남아있을지 모를 active 클래스 초기화
-  });
-});
 
 // gsap - 클론 영역 스크롤 시 오-> 왼 방향으로 타이틀, clone01, clone02 순으로 들어옴
 const clone = gsap.timeline({
@@ -58,7 +100,7 @@ clone
   .to({}, { duration: 1 })
 
   // 클론01 페이지 배경이 옆에서 들어옴
-  .to(".clone01", { x: "0%", duration: 2, ease: "linear" }, "+=1")
+  .to(".clone01", { top: 0, duration: 2, ease: "linear" }, "+=1")
   // 프리뷰 박스 아래에서 위로 올라옴
   .from(
     ".clone01 .preview-box",
@@ -81,7 +123,7 @@ clone
   .to({}, { duration: 1.5 })
 
   // 클론02 페이지 배경이 옆에서 들어옴
-  .to(".clone02", { x: "0%", duration: 2, ease: "linear" }, "+=1")
+  .to(".clone02", { top: 0, duration: 2, ease: "linear" }, "+=1")
   // 프리뷰 박스 아래에서 위로 올라옴
   .from(
     ".clone02 .preview-box",
@@ -158,6 +200,35 @@ design
     ease: "power2.out",
   })
   .to({}, { duration: 2 });
+
+// 디자인 페이지에 카드 클릭했을 때 풀스크린으로 열리고 닫힘
+const cards = document.querySelectorAll(".card-box > div");
+
+cards.forEach((card) => {
+  card.addEventListener("click", () => {
+    // 이미 active 상태면 제거
+    if (card.classList.contains("active")) {
+      card.classList.remove("active");
+    }
+
+    // active 없으면 추가
+    else {
+      // 다른 카드 active 제거
+      cards.forEach((c) => {
+        c.classList.remove("active");
+      });
+
+      // 클릭 카드 active 추가
+      card.classList.add("active");
+    }
+  });
+});
+window.addEventListener("load", () => {
+  const previewBoxes = document.querySelectorAll(".preview-box");
+  previewBoxes.forEach((box) => {
+    box.classList.remove("active"); // 혹시 남아있을지 모를 active 클래스 초기화
+  });
+});
 
 // 자바 / 스크립트 텍스트가 중앙에서 제자리로
 const jsText = gsap.timeline({
