@@ -843,10 +843,10 @@ section {
 .contact-bottom .notion-logo {
   width: 20px;
 }
-.info-item {
+.bottom-right .info-item {
   position: relative;
 }
-.info-item::after {
+.bottom-right .info-item::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -856,6 +856,6 @@ section {
   height: 12px;
   background-color: rgba(0, 0, 0, 0.3);
 }
-.info-item:last-child::after {
+.bottom-right .info-item:last-child::after {
   display: none;
 }
