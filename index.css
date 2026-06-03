@@ -698,6 +698,7 @@ section {
   transform: translate(-50%, -50%);
   font-size: 1.8rem;
   line-height: 1.6;
+  word-break: keep-all;
 }
 /* play-item */
 #playground .play-item {
@@ -725,7 +726,13 @@ section {
   background-position: center;
   background-size: cover;
   background-color: #fb5842;
-  /* background-image: url(img/movie.jpg); */
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+#playground .play-item li:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 #playground .play-item li a {
   display: block;
@@ -736,17 +743,36 @@ section {
   align-items: center;
   font-size: 4rem;
 }
+.play-item li a::after {
+  content: attr(data-hover);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: pre-line;
+  opacity: 0;
+  transition: 0.3s;
+}
+.play-item li:hover a::after {
+  opacity: 1;
+}
+#playground .number-bg {
+  background-image: url(img/weather.jpg);
+}
 #playground .weather-bg {
   background-image: url(img/weather.jpg);
 }
 #playground .movie-bg {
   background-image: url(img/movie.jpg);
-}
-
-#playground .play-item a {
-  display: block;
-  width: 100%;
-  height: 100%;
 }
 /* contact /////////////////////////////////////////////////// */
 #contact {
