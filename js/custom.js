@@ -230,6 +230,21 @@ window.addEventListener("load", () => {
   });
 });
 
+// 카드 박스에서 사진 페이드 인아웃
+let total = 4;
+console.log(total);
+let i = 0;
+
+setInterval(function () {
+  if (i === total - 1) {
+    i = 0;
+  } else {
+    i++;
+  }
+  $(".active .img-wrap li").fadeOut();
+  $(".active .img-wrap li").eq(i).fadeIn();
+}, 2000);
+
 // 자바 / 스크립트 텍스트가 중앙에서 제자리로
 const jsText = gsap.timeline({
   scrollTrigger: {
