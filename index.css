@@ -453,7 +453,7 @@ section {
   /* 디자인 감성 채우기 */
   padding: 10px 20px;
   border: 1px solid #222;
-  border-radius: 30px;
+  border-radius: 3rem;
   background-color: rgba(255, 255, 255, 0.9);
   font-size: 1.2rem;
   letter-spacing: 0.1em;
@@ -640,6 +640,8 @@ section {
   width: 500px;
   height: 400px;
   position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
 }
 .img-wrap li {
   width: 100%;
@@ -786,13 +788,14 @@ section {
   width: 90%;
   position: absolute;
   left: 50%;
-  top: 20%;
+  top: 10%;
   transform: translateX(-50%);
 }
 .contact-title {
   font-size: 6rem;
   letter-spacing: -0.05em;
   text-align: center;
+  line-height: 1.5;
 }
 .contact-center > div {
   font-size: 14rem;
@@ -802,10 +805,10 @@ section {
 .contact-center .thank {
   font-size: 4rem;
   font-weight: normal;
+  color: #000;
   display: inline-block;
   padding: 0 4rem;
   min-width: 300px;
-  /* border: 1px solid red; */
 }
 /* contact-bottom */
 .contact-bottom {
@@ -817,6 +820,10 @@ section {
   left: 50%;
   bottom: 15%;
   transform: translateX(-50%);
+  font-weight: bold;
+}
+.contact-bottom span {
+  font-weight: normal;
 }
 .contact-bottom .bottom-left {
   width: 50%;
@@ -824,7 +831,31 @@ section {
 .contact-bottom .bottom-right {
   width: 50%;
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 3rem;
 }
-.contact-bottom .bottom-right > div {
-  width: 50%;
+.contact-bottom .notion {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.contact-bottom .notion-logo {
+  width: 20px;
+}
+.info-item {
+  position: relative;
+}
+.info-item::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -1.5rem;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 12px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.info-item:last-child::after {
+  display: none;
 }

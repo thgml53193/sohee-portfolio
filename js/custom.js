@@ -295,7 +295,7 @@ jsText
   );
 
 //gsap - contact 텍스트 변경
-const textItems = ["contact", "감사합니다."];
+const textItems = ["contact ↗", "감사합니다."];
 let currentIndex = 0;
 
 function changeText() {
