@@ -168,6 +168,9 @@ section {
   left: 60%;
   transform: translate(-50%, -50%);
 }
+#about .detail > div > div {
+  display: flex;
+}
 #about .info-item {
   display: flex;
   margin-bottom: 0.5rem;
@@ -177,15 +180,17 @@ section {
   flex-shrink: 0;
   font-weight: bold;
 }
-#about .info-item dd {
-  margin-bottom: 0.2rem;
-}
 /* article 스킬 */
+#about article.skill {
+  flex: 1;
+}
 #about article.skill ul li {
-  font-size: 1.8rem;
   letter-spacing: -0.01em;
 }
-
+/* article 자격증 */
+#about article.certificate {
+  flex: 1;
+}
 #about .photo-center {
   width: 280px;
   height: 45vh;
@@ -287,7 +292,7 @@ section {
 }
 #clone-wrap .preview-box.active img {
   transform: translateY(calc(-100% + 72vh));
-  transition: transform 7s linear;
+  transition: transform 10s linear;
 }
 
 #clone-wrap button {

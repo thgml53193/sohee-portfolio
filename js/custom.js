@@ -77,7 +77,7 @@ introTl
     duration: 0,
   });
 
-// gsap - 클론 영역 스크롤 시 오-> 왼 방향으로 타이틀, clone01, clone02 순으로 들어옴
+// gsap - 클론 영역 스크롤 시 타이틀, clone01, clone02 아래 -> 위 방향으로 올라옴
 const clone = gsap.timeline({
   scrollTrigger: {
     trigger: "#clone-wrap",
@@ -99,7 +99,7 @@ clone
   })
   .to({}, { duration: 1 })
 
-  // 클론01 페이지 배경이 옆에서 들어옴
+  // 클론01 페이지 배경이 아래에서 올라옴
   .to(".clone01", { top: 0, duration: 2, ease: "linear" }, "+=1")
   // 프리뷰 박스 아래에서 위로 올라옴
   .from(
@@ -122,7 +122,7 @@ clone
   )
   .to({}, { duration: 1.5 })
 
-  // 클론02 페이지 배경이 옆에서 들어옴
+  // 클론02 페이지 배경이 아래에서 올라옴
   .to(".clone02", { top: 0, duration: 2, ease: "linear" }, "+=1")
   // 프리뷰 박스 아래에서 위로 올라옴
   .from(
@@ -145,7 +145,7 @@ clone
   )
   .to({}, { duration: 1.5 });
 
-//gsap - 디자인 타이틀 영역 스크롤 시 아래 -> 위 방향으로 디자인 페이지 올라옴
+//gsap - 디자인 타이틀 영역 스크롤 시 아래 -> 위 방향으로 올라옴
 const design = gsap.timeline({
   scrollTrigger: {
     trigger: "#design-wrap",
