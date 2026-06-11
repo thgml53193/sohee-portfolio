@@ -374,7 +374,7 @@ section {
   line-height: 1.2;
 }
 #design-wrap .line-item {
-  display: block; /* transform을 적용하기 위해 block 설정 */
+  display: block;
   will-change: transform; /* 애니메이션 성능 최적화 */
 }
 #design-wrap .title .stroke {
@@ -446,16 +446,13 @@ section {
   transform: translateY(35%);
   z-index: 3;
 }
-/* 1. 기본 상태: 처음부터 화면 우측 상단(fixed)에 투명하게 대기 시킵니다. */
 .card-box .custom-close-cursor {
   position: fixed; /* ★ absolute에서 fixed로 변경하여 위치 튐 방지 */
   right: 40px;
   top: 40px;
   font-size: 1.4rem;
   opacity: 0;
-  z-index: 10000; /* ★ 화면 가장 위에 오도록 active(9999)보다 높게 세팅 */
-
-  /* 디자인 감성 채우기 */
+  z-index: 10000;
   padding: 10px 20px;
   border: 1px solid #222;
   border-radius: 3rem;
@@ -465,7 +462,6 @@ section {
   font-weight: 500;
   color: #222;
 }
-/* 2. active 상태: 카드가 화면을 꽉 채웠을 때 투명도만 1로 켜줍니다. */
 .card-box > div.active .custom-close-cursor {
   opacity: 1;
   transition: opacity 0.4s ease 0.4s;
@@ -499,12 +495,8 @@ section {
   padding: 4rem 8rem;
   overflow-y: auto;
   margin: 0;
-  /* transform: none !important; */
   transform: translateY(0) !important;
 }
-/* CSS 공식 스펙에 따르면, 어떤 요소에 position: fixed;를 주면 브라우저의 화면(Viewport)을 기준으로 위치를 잡아야 합니다.
-
-하지만 그 요소의 조상(부모) 중에 transform 속성을 가진 요소가 단 하나라도 있으면, fixed는 화면이 아니라 그 transform이 걸려있는 부모 박스를 기준으로 갇혀버리게 됩니다. */
 .card-box > div.active h3 {
   font-size: 15rem;
   justify-content: center;
@@ -527,13 +519,12 @@ section {
   gap: 2rem;
   margin-top: 50px;
 }
-
-/* project-info */
 .project-info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-size: 1.8rem;
+  word-break: keep-all;
 }
 .card-box .project-info .top span {
   font-size: 1.8rem;
@@ -546,7 +537,6 @@ section {
   align-items: center;
   margin-bottom: 2rem;
 }
-
 .project-info .spec-item dt {
   width: 90px;
   flex-shrink: 0;
@@ -570,12 +560,12 @@ section {
   margin-right: 0.8rem;
 }
 .project-info .spec-item dd .by::before {
-  background-color: #fdfbdd;
-  border: 1px solid #eae7cc;
+  background-color: #fff5d6;
+  border: 1px solid #f0e3bc;
 }
 .project-info .spec-item dd .wh::before {
-  background-color: #ffffff;
-  border: 1px solid #eae7cc;
+  background-color: #3d352f;
+  border: 1px solid #332c28;
 }
 .project-info .spec-item dd .or::before {
   background-color: #f38b5e;
@@ -647,6 +637,7 @@ section {
   position: relative;
   border-radius: 1rem;
   overflow: hidden;
+  flex-shrink: 0;
 }
 .img-wrap li {
   width: 100%;
