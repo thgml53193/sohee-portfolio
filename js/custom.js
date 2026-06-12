@@ -6,51 +6,15 @@
 
 Splitting();
 
-const introTl = gsap.timeline();
+const heroTl = gsap.timeline();
 
-introTl
-
-  // 쪼개진 글자들(.char)이 아래에서 위로 살짝 올라오며 순서대로 등장
-  .from(".intro-mask .char", {
-    y: 40,
+heroTl
+  .from("#hero h1", {
+    y: 120,
     opacity: 0,
-    duration: 0.6,
-    stagger: 0.03,
-    ease: "power2.out",
-    delay: 0.5,
+    duration: 1.6,
+    ease: "power3.out",
   })
-
-  .to({}, { duration: 1.5 })
-
-  // 사라질 때도 글자들이 위로 슥 올라가며 투명하게 페이드아웃
-  .to(".intro-mask .char", {
-    opacity: 0,
-    y: -30,
-    duration: 0.4,
-    stagger: 0.01, // 사라질 때는 조금 더 빠르게 쇽 지나가기
-    ease: "power2.in",
-  })
-
-  .to(
-    ".intro-mask",
-    {
-      yPercent: -100,
-      duration: 0.8,
-      ease: "power4.inOut",
-      delay: 1,
-    },
-    "-=0.2",
-  )
-  .from(
-    "#hero h1",
-    {
-      y: 120,
-      opacity: 0,
-      duration: 1.6,
-      ease: "power3.out",
-    },
-    "-=1.2",
-  )
   .from(
     "#hero nav ul li",
     {
