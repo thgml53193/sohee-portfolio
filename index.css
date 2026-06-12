@@ -139,16 +139,11 @@ section {
   flex-shrink: 0;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #555;
-}
-
-#about .info-item dd {
-  font-weight: bold;
 }
 
 /* 자기소개 */
 #about h3 {
-  margin-top: 3.5rem;
+  margin-top: 4rem;
   margin-bottom: 1rem;
   font-size: 2rem;
 }
@@ -167,7 +162,7 @@ section {
 #about .skill-cert-wrap {
   display: flex;
   gap: 3rem;
-  margin-top: 2rem;
+  margin-top: 4rem;
 }
 
 #about .skill-cert-wrap h3 {
