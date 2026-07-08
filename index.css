@@ -690,11 +690,11 @@ section {
 }
 /* play-item */
 #playground .play-item {
-  width: 80%;
-  height: fit-content;
+  width: 70%;
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 6rem;
   position: absolute;
   margin: auto;
   top: 0;
@@ -706,8 +706,8 @@ section {
   pointer-events: none;
 }
 #playground .play-item li {
-  width: calc((100% - 4rem) / 3);
-  aspect-ratio: 5 / 7;
+  width: 450px;
+  height: 650px;
   border-radius: 2rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   background-repeat: no-repeat;
