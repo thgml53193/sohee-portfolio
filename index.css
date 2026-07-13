@@ -197,7 +197,7 @@ section {
   object-fit: cover;
 }
 /* clone /////////////////////////////////////////////////// */
-#clone {
+#clone-wrap {
   width: 100%;
   height: 100vh;
   position: relative;
@@ -220,7 +220,7 @@ section {
   bottom: 8rem;
 }
 #clone-wrap .title h2 {
-  font-size: clamp(24px, 9vw, 180px);
+  font-size: clamp(60px, 10vw, 180px);
   font-family: "MonumentExtended", sans-serif;
   letter-spacing: -0.05em;
   line-height: 1;
@@ -440,7 +440,6 @@ section {
   position: fixed; /* ★ absolute에서 fixed로 변경하여 위치 튐 방지 */
   right: 40px;
   top: 40px;
-  font-size: 1.4rem;
   opacity: 0;
   z-index: 10000;
   padding: 10px 20px;
@@ -461,7 +460,7 @@ section {
   gap: 1rem;
   justify-content: flex-end;
   align-items: flex-start;
-  font-size: 10rem;
+  font-size: clamp(3rem, 10vw, 10rem);
   letter-spacing: -0.02em;
 }
 .card-box h3 span {
@@ -488,10 +487,10 @@ section {
   transform: translateY(0) !important;
 }
 .card-box > div.active h3 {
-  font-size: 15rem;
+  font-size: clamp(6rem, 12vw, 15rem);
   justify-content: center;
 }
-.card-box > div.active span {
+.card-box > div.active h3 span {
   font-size: 2.5rem;
 }
 .card-box h3,
@@ -517,10 +516,13 @@ section {
   word-break: keep-all;
 }
 .card-box .project-info .top span {
-  font-size: 1.8rem;
   margin-bottom: 1rem;
   font-weight: bold;
   display: block;
+}
+.card-box .project-info .top {
+  margin-bottom: 2rem;
+  line-height: 1.5;
 }
 .project-info .spec-item {
   display: flex;
@@ -537,7 +539,6 @@ section {
   gap: 2rem;
 }
 .project-info .spec-item dd span {
-  font-size: 1.6rem;
   display: flex;
   align-items: center;
 }
@@ -622,8 +623,10 @@ section {
 
 /* project-img */
 .img-wrap {
-  width: 500px;
-  height: 400px;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  aspect-ratio: 4/3;
   position: relative;
   border-radius: 1rem;
   overflow: hidden;
@@ -665,7 +668,7 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-size: 24rem;
+  font-size: clamp(8rem, 16vw, 24rem);
   color: #fb5842;
   font-family: "MonumentExtended", sans-serif;
   letter-spacing: -0.05em;
@@ -691,9 +694,11 @@ section {
 /* play-item */
 #playground .play-item {
   width: 70%;
+  max-width: 1000px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 6rem;
   position: absolute;
   margin: auto;
@@ -778,13 +783,13 @@ section {
   transform: translateX(-50%);
 }
 .contact-title {
-  font-size: 6rem;
+  font-size: clamp(3rem, 7vw, 7rem);
   letter-spacing: -0.05em;
   text-align: center;
-  line-height: 1.5;
+  line-height: 1.3;
 }
 .contact-center > div {
-  font-size: 14rem;
+  font-size: clamp(3rem, 10vw, 14rem);
   text-align: center;
   margin-top: 8rem;
 }
@@ -795,6 +800,7 @@ section {
   display: inline-block;
   padding: 0 4rem;
   min-width: 300px;
+  cursor: pointer;
 }
 /* contact-bottom */
 .contact-bottom {
@@ -844,4 +850,317 @@ section {
 }
 .bottom-right .info-item:last-child::after {
   display: none;
+}
+/* modal */
+.contact-modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background: rgba(240, 235, 227, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+.modal-content {
+  width: 600px;
+  padding: 60px;
+  background: #fff;
+  border: 1px solid #333;
+  position: relative;
+}
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 15px 0;
+  margin-bottom: 25px;
+  border: none;
+  border-bottom: 1px solid #333;
+  background: transparent;
+  outline: none;
+}
+.modal-content textarea {
+  height: 100px;
+  resize: none;
+}
+.modal-content .submit-btn {
+  display: block;
+  width: auto;
+  background: #fb5842;
+  color: #fff;
+  padding: 15px 40px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-top: 30px;
+  border: none;
+}
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* 태블릿버전 max-width: 1024px */
+@media (max-width: 1024px) {
+  #hero .top {
+    width: 90%;
+  }
+  #hero .bottom {
+    width: 90%;
+  }
+  /* about /////////////////////////////////////////////////// */
+  #about {
+    flex-direction: column;
+    height: auto;
+    padding: 8rem 0;
+  }
+  #about .photo-bg {
+    display: none;
+  }
+  #about .detail {
+    width: 100%;
+    position: relative;
+    background: none;
+  }
+  #about .content-wrapper {
+    width: 90%;
+    max-width: 600px;
+    position: static;
+    transform: none;
+    margin: 0 auto;
+  }
+  #about .photo-center {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    box-shadow: none;
+    margin: 0 auto 5rem;
+  }
+
+  /* clone /////////////////////////////////////////////////// */
+  #clone-wrap .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #clone-wrap .title-box {
+    position: static;
+    transform: none;
+  }
+  #clone-wrap .title h2 {
+    font-size: clamp(40px, 11vw, 180px);
+    letter-spacing: -0.08em;
+    line-height: 0.9;
+  }
+  #clone-wrap button {
+    width: 120px;
+    height: 45px;
+  }
+  #clone-wrap button a {
+    font-size: 1.6rem;
+  }
+
+  /* design /////////////////////////////////////////////////// */
+  #design-wrap .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #design-wrap .title-box {
+    position: static;
+    transform: none;
+  }
+  #design-wrap .title h2 {
+    font-size: clamp(40px, 11vw, 180px);
+    letter-spacing: -0.08em;
+    line-height: 0.9;
+  }
+  .design-page .p {
+    font-size: 2rem;
+    line-height: 1.5;
+  }
+  .info-container {
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  .card-box > div.active {
+    padding: 4rem 0;
+  }
+  .info-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .project-info button {
+    width: 120px;
+    height: 45px;
+  }
+  .project-info button a {
+    font-size: 1.6rem;
+  }
+
+  /* playground /////////////////////////////////////////////////// */
+
+  /* contact /////////////////////////////////////////////////// */
+
+  /* contact-center */
+  .contact-center {
+    width: 90%;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translateX(-50%);
+  }
+  .contact-title {
+    line-height: 1.2;
+  }
+  .contact-center > div {
+    margin-top: 6rem;
+  }
+  .contact-center .thank {
+    font-size: 3.5rem;
+    padding: 0 3rem;
+  }
+  .contact-bottom {
+    width: 90%;
+  }
+  .contact-bottom .bottom-right {
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 2rem;
+  }
+  .bottom-right .info-item::after {
+    display: none;
+  }
+}
+
+/* 모바일버전 max-width: 768px */
+@media (max-width: 768px) {
+  /* about /////////////////////////////////////////////////// */
+  #about {
+    padding: rem 0;
+  }
+  #about .detail {
+    width: 100%;
+    position: relative;
+    background: none;
+  }
+
+  #about .photo-center {
+    margin: 0 auto 6rem;
+  }
+
+  /* design /////////////////////////////////////////////////// */
+  .info-container {
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  /* playground /////////////////////////////////////////////////// */
+
+  /* contact /////////////////////////////////////////////////// */
+
+  /* contact-center */
+  .contact-center {
+    width: 90%;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translateX(-50%);
+  }
+  .contact-title {
+    line-height: 1.2;
+  }
+  .contact-center > div {
+    margin-top: 6rem;
+  }
+  .contact-center .thank {
+    font-size: 3.5rem;
+    padding: 0 3rem;
+  }
+  .contact-bottom {
+    width: 90%;
+  }
+  .contact-bottom .bottom-right {
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 2rem;
+  }
+  .bottom-right .info-item::after {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  /* hero /////////////////////////////////////////////////// */
+  #hero .top {
+    font-size: 1.3rem;
+  }
+  #hero nav ul {
+    font-size: 1.6rem;
+  }
+  /* clone /////////////////////////////////////////////////// */
+  #clone-wrap button a {
+    font-size: 1.5rem;
+  }
+  /* design /////////////////////////////////////////////////// */
+  .design-page h4 {
+    font-size: 3rem;
+  }
+  .design-page .p {
+    font-size: 1.6rem;
+  }
+  .card-box .custom-close-cursor {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    padding: 7px 14px;
+    font-size: 1rem;
+  }
+  .card-box > div.active h3 span {
+    font-size: 2rem;
+  }
+  .project-info {
+    font-size: 1.5rem;
+  }
+  .project-info .spec-item dt {
+    width: 70px;
+  }
+  .project-info button a {
+    font-size: 1.5rem;
+  }
+  /* contact /////////////////////////////////////////////////// */
+  .contact-center .thank {
+    font-size: 2rem;
+    padding: 0 1.5rem;
+    display: inline;
+  }
+  .contact-bottom {
+    font-size: 1.4rem;
+  }
+  .contact-bottom .bottom-left {
+    width: 20%;
+  }
+  .contact-bottom .bottom-right {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 3rem;
+  }
 }

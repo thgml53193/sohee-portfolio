@@ -1,10 +1,6 @@
-// 새로고침 시 스크롤을 맨 위로 강제 고정하는 안전장치
-// if (history.scrollRestoration) {
-//   history.scrollRestoration = "manual";
-// }
-// window.scrollTo(0, 0);
-
-Splitting();
+(function () {
+  emailjs.init("nFY4hzUqykdzXFOMY");
+})();
 
 const heroTl = gsap.timeline();
 
@@ -209,12 +205,13 @@ setInterval(function () {
   $(".active .img-wrap li").eq(i).fadeIn();
 }, 2000);
 
-// 자바 / 스크립트 텍스트가 중앙에서 제자리로
+// 자바스크립트 텍스트가 중앙에서 제자리로
+const isMobile = () => window.innerWidth <= 768;
 const jsText = gsap.timeline({
   scrollTrigger: {
     trigger: "#playground",
     start: "top top",
-    end: "+=300%",
+    end: () => (isMobile() ? "+=200%" : "+=300%"),
     pin: true,
     scrub: 1,
   },
@@ -222,7 +219,7 @@ const jsText = gsap.timeline({
 
 jsText
   .from(".big-text-box .java", {
-    y: "40vh",
+    y: () => (isMobile() ? "-20vh" : "-40vh"),
     letterSpacing: "0.2em",
     opacity: 0,
     duration: 1,
@@ -230,7 +227,7 @@ jsText
   .from(
     ".big-text-box .script",
     {
-      y: "-40vh",
+      y: () => (isMobile() ? "20vh" : "40vh"),
       letterSpacing: "0.2em",
       opacity: 0,
       duration: 1,
@@ -245,7 +242,7 @@ jsText
     "#playground .play-item",
     {
       scale: 1, // 약간 작았다가 커지면서 (원근감)
-      rotationX: 15, // 살짝 뒤로 누웠다가 세워지는 느낌 (입체감)
+      rotationX: () => (isMobile() ? 0 : 15), // 살짝 뒤로 누웠다가 세워지는 느낌 (입체감)
       opacity: 1, // 서서히 나타남
       duration: 2,
       ease: "power2.out",
@@ -259,7 +256,7 @@ jsText
   );
 
 //gsap - contact 텍스트 변경
-const textItems = ["contact ↗", "감사합니다."];
+const textItems = ["contact ↗", "감사합니다 ↗"];
 let currentIndex = 0;
 
 function changeText() {
@@ -285,3 +282,45 @@ function changeText() {
 
 // 2.5초마다 실행
 setInterval(changeText, 2500);
+
+// modal
+const modal = document.querySelector(".contact-modal");
+const contactForm = document.getElementById("contact-form");
+const contactBtn = document.querySelector(".thank"); // 기존 contact 텍스트
+const closeBtn = document.querySelector(".close-btn");
+
+contactBtn.addEventListener("click", () => {
+  modal.style.display = "flex";
+  gsap.to(".contact-modal", {
+    opacity: 1,
+    visibility: "visible",
+    duration: 0.5,
+  });
+});
+closeBtn.addEventListener("click", () => {
+  gsap.to(".contact-modal", {
+    opacity: 0,
+    duration: 0.5,
+    onComplete: () => {
+      // 애니메이션이 완전히 끝난 후 display를 none으로 변경
+      modal.style.display = "none";
+      modal.style.visibility = "hidden";
+    },
+  });
+});
+
+contactForm.addEventListener("submit", function (e) {
+  e.preventDefault(); // 새로고침 방지
+
+  // 서비스ID, 템플릿ID
+  emailjs.sendForm("thgml53193", "template_81q5uce", this).then(
+    function () {
+      alert("성공적으로 전송되었습니다!");
+      modal.style.display = "none";
+      contactForm.reset();
+    },
+    function (error) {
+      alert("전송 실패: " + JSON.stringify(error));
+    },
+  );
+});
