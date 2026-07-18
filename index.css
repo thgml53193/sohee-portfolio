@@ -1046,12 +1046,18 @@ section {
 @media (max-width: 768px) {
   section {
     height: auto;
-    min-height: 100vh;
+    min-height: 100svh;
     overflow: visible;
+  }
+  /* hero /////////////////////////////////////////////////// */
+  #hero {
+    height: 100svh;
+    min-height: 100svh;
+    overflow: hidden;
   }
   /* about /////////////////////////////////////////////////// */
   #about {
-    padding: 5rem 0;
+    padding: 4rem 0;
   }
   #about .detail {
     width: 100%;
@@ -1060,12 +1066,14 @@ section {
   }
   /* clone /////////////////////////////////////////////////// */
   #clone-wrap {
-    height: 100vh;
+    height: 100svh;
+    min-height: 100svh;
     overflow: hidden;
   }
   /* design /////////////////////////////////////////////////// */
   #design-wrap {
-    height: 100vh;
+    height: 100svh;
+    min-height: 100svh;
     overflow: hidden;
   }
   .design-page .p {
@@ -1077,7 +1085,8 @@ section {
 
   /* playground /////////////////////////////////////////////////// */
   #playground {
-    height: 100vh;
+    height: 100svh;
+    min-height: 100svh;
     overflow: hidden;
   }
   #playground .big-text-box {
@@ -1127,8 +1136,12 @@ section {
   }
 
   /* contact /////////////////////////////////////////////////// */
+  #contact {
+    height: 100svh;
+    min-height: 100svh;
+    overflow: hidden;
+  }
 
-  /* contact-center */
   .contact-center {
     width: 90%;
     position: absolute;

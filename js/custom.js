@@ -42,7 +42,7 @@ const clone = gsap.timeline({
   scrollTrigger: {
     trigger: "#clone-wrap",
     start: "top top",
-    end: "+=600%",
+    end: () => (window.innerWidth <= 768 ? "+=300%" : "+=600%"),
     pin: true,
     scrub: 2,
     anticipatePin: 1, // 핀이 풀릴 때의 움직임을 미리 계산해서 부드럽게 만들어줌
@@ -110,7 +110,7 @@ const design = gsap.timeline({
   scrollTrigger: {
     trigger: "#design-wrap",
     start: "top top",
-    end: "+=500%",
+    end: () => (window.innerWidth <= 768 ? "+=300%" : "+=600%"),
     pin: true,
     scrub: 2,
     anticipatePin: 1, // 핀이 풀릴 때의 움직임을 미리 계산해서 부드럽게 만들어줌
@@ -363,4 +363,8 @@ contactForm.addEventListener("submit", function (e) {
       alert("전송 실패: " + JSON.stringify(error));
     },
   );
+});
+
+window.addEventListener("resize", () => {
+  ScrollTrigger.refresh();
 });
