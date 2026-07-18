@@ -1071,14 +1071,16 @@ section {
   }
   #clone-wrap .clone01 {
     height: 100svh;
-    top: 100%;
+    top: 0;
+    transform: translateY(100%);
   }
   #clone-wrap .preview {
     height: 80svh;
   }
   #clone-wrap .clone02 {
     height: 100svh;
-    top: 100%;
+    top: 0;
+    transform: translateY(100%);
   }
   /* design /////////////////////////////////////////////////// */
   #design-wrap {
