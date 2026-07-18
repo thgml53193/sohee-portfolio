@@ -42,7 +42,7 @@ const clone = gsap.timeline({
   scrollTrigger: {
     trigger: "#clone-wrap",
     start: "top top",
-    end: () => (window.innerWidth <= 768 ? "+=300%" : "+=600%"),
+    end: () => (window.innerWidth <= 768 ? "+=400%" : "+=600%"),
     pin: true,
     scrub: 2,
     anticipatePin: 1, // 핀이 풀릴 때의 움직임을 미리 계산해서 부드럽게 만들어줌
@@ -110,7 +110,7 @@ const design = gsap.timeline({
   scrollTrigger: {
     trigger: "#design-wrap",
     start: "top top",
-    end: () => (window.innerWidth <= 768 ? "+=300%" : "+=600%"),
+    end: () => (window.innerWidth <= 768 ? "+=350%" : "+=600%"),
     pin: true,
     scrub: 2,
     anticipatePin: 1, // 핀이 풀릴 때의 움직임을 미리 계산해서 부드럽게 만들어줌
@@ -212,7 +212,7 @@ const jsText = gsap.timeline({
   scrollTrigger: {
     trigger: "#playground",
     start: "top top",
-    end: () => (isMobile() ? "+=2000" : "+=300%"),
+    end: () => (isMobile() ? "+=300%" : "+=300%"),
     pin: true,
     scrub: 1,
   },
@@ -365,6 +365,12 @@ contactForm.addEventListener("submit", function (e) {
   );
 });
 
+let resizeTimer;
+
 window.addEventListener("resize", () => {
-  ScrollTrigger.refresh();
+  clearTimeout(resizeTimer);
+
+  resizeTimer = setTimeout(() => {
+    ScrollTrigger.refresh();
+  }, 300);
 });

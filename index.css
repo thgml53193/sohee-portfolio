@@ -377,7 +377,7 @@ section {
   display: none;
 }
 /* design-page */
-.design-page {
+#design-wrap .design-page {
   width: 100%;
   height: 100vh;
   background-color: #fb5842;
@@ -1044,11 +1044,6 @@ section {
 
 /* 모바일버전 max-width: 768px */
 @media (max-width: 768px) {
-  section {
-    height: auto;
-    min-height: 100svh;
-    overflow: visible;
-  }
   /* hero /////////////////////////////////////////////////// */
   #hero {
     height: 100svh;
@@ -1070,11 +1065,31 @@ section {
     min-height: 100svh;
     overflow: hidden;
   }
+  #clone-wrap .title {
+    height: 100svh;
+  }
+  #clone-wrap .clone01 {
+    height: 100svh;
+    top: 100svh;
+  }
+  #clone-wrap .preview {
+    height: 80svh;
+  }
+  #clone-wrap .clone02 {
+    height: 100svh;
+    top: 100svh;
+  }
   /* design /////////////////////////////////////////////////// */
   #design-wrap {
     height: 100svh;
     min-height: 100svh;
     overflow: hidden;
+  }
+  #design-wrap .title {
+    height: 100svh;
+  }
+  #design-wrap .design-page {
+    height: 100svh;
   }
   .design-page .p {
     font-size: 1.6rem;
@@ -1139,7 +1154,6 @@ section {
   #contact {
     height: 100svh;
     min-height: 100svh;
-    overflow: hidden;
   }
 
   .contact-center {
