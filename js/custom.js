@@ -60,7 +60,7 @@ clone
   .to({}, { duration: 1 })
 
   // 클론01 페이지 배경이 아래에서 올라옴
-  .to(".clone01", { top: 0, duration: 2, ease: "linear" }, "+=1")
+  .to(".clone01", { yPercent: -100, duration: 2, ease: "linear" }, "+=1")
   // 프리뷰 박스 아래에서 위로 올라옴
   .from(
     ".clone01 .preview-box",
@@ -83,7 +83,7 @@ clone
   .to({}, { duration: 1.5 })
 
   // 클론02 페이지 배경이 아래에서 올라옴
-  .to(".clone02", { top: 0, duration: 2, ease: "linear" }, "+=1")
+  .to(".clone02", { yPercent: 100, duration: 2, ease: "linear" }, "+=1")
   // 프리뷰 박스 아래에서 위로 올라옴
   .from(
     ".clone02 .preview-box",

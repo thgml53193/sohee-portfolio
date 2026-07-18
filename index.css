@@ -103,6 +103,7 @@ section {
   position: relative;
   overflow: hidden;
   background-color: #f2f2eb;
+  border: 1px solid red;
 }
 
 #about .photo-bg {
@@ -1070,14 +1071,14 @@ section {
   }
   #clone-wrap .clone01 {
     height: 100svh;
-    top: 100svh;
+    top: 100%;
   }
   #clone-wrap .preview {
     height: 80svh;
   }
   #clone-wrap .clone02 {
     height: 100svh;
-    top: 100svh;
+    top: 100%;
   }
   /* design /////////////////////////////////////////////////// */
   #design-wrap {
