@@ -48,6 +48,7 @@ section {
 /* hero /////////////////////////////////////////////////// */
 /* hero top */
 #hero {
+  width: 100%;
   height: 100vh;
   background-color: #fb5842;
   position: relative;
@@ -125,19 +126,18 @@ section {
   top: 50%;
   left: 60%;
   transform: translate(-50%, -50%);
+  font-size: 1.6rem;
 }
 
 /* 개인정보 */
 #about .info-item {
   display: flex;
   margin-bottom: 1.4rem;
-  font-size: 1.6rem;
 }
 
 #about .info-item dt {
   width: 90px;
   flex-shrink: 0;
-  font-size: 1.5rem;
   font-weight: 600;
 }
 
@@ -167,7 +167,7 @@ section {
 
 #about .skill-cert-wrap h3 {
   margin-top: 0;
-  font-size: 1.8rem;
+  font-size: 2rem;
   border-bottom: 0.2rem solid #3d352f;
   display: inline-block;
   padding-bottom: 0.2rem;
@@ -175,18 +175,18 @@ section {
 
 #about .skill-cert-wrap ul li {
   margin-bottom: 0.6rem;
-  font-size: 1.5rem;
   color: #333;
 }
 
 /* 중앙 이미지 */
 #about .photo-center {
-  width: 280px;
-  height: 45vh;
+  width: 250px;
+  height: auto;
+  aspect-ratio: 3/4;
   position: absolute;
-  left: 50%;
+  left: -110%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(50%, -50%);
   z-index: 10;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
@@ -220,7 +220,7 @@ section {
   bottom: 8rem;
 }
 #clone-wrap .title h2 {
-  font-size: clamp(60px, 10vw, 180px);
+  font-size: clamp(40px, 10vw, 180px);
   font-family: "MonumentExtended", sans-serif;
   letter-spacing: -0.05em;
   line-height: 1;
@@ -353,7 +353,7 @@ section {
   bottom: 8rem;
 }
 #design-wrap .title h2 {
-  font-size: clamp(24px, 9vw, 180px);
+  font-size: clamp(40px, 10vw, 180px);
   font-family: "MonumentExtended", sans-serif;
   letter-spacing: -0.05em;
   line-height: 1;
@@ -506,7 +506,7 @@ section {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  margin-top: 50px;
+  margin-top: 5rem;
 }
 .project-info {
   display: flex;
@@ -526,7 +526,6 @@ section {
 }
 .project-info .spec-item {
   display: flex;
-  align-items: center;
   margin-bottom: 2rem;
 }
 .project-info .spec-item dt {
@@ -663,8 +662,9 @@ section {
   opacity: 0.3;
 }
 #playground .big-text-box {
-  width: 100%;
+  width: 90%;
   height: 100vh;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -672,14 +672,13 @@ section {
   color: #fb5842;
   font-family: "MonumentExtended", sans-serif;
   letter-spacing: -0.05em;
-  padding: 0 6rem;
 }
 #playground .big-text-box span {
   display: block; /* 이동(y) 효과가 잘 먹히도록 설정 */
 }
 #playground .big-text-box .script {
   text-align: right;
-  padding-right: 5rem;
+  /* padding-right: 5rem; */
 }
 #playground .small-text-box {
   width: 30%;
@@ -698,7 +697,6 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   gap: 6rem;
   position: absolute;
   margin: auto;
@@ -711,8 +709,10 @@ section {
   pointer-events: none;
 }
 #playground .play-item li {
-  width: 450px;
-  height: 650px;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  aspect-ratio: 5/7;
   border-radius: 2rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   background-repeat: no-repeat;
@@ -757,9 +757,6 @@ section {
 }
 .play-item li:hover a::after {
   opacity: 1;
-}
-#playground .number-bg {
-  background-image: url(img/weather.jpg);
 }
 #playground .weather-bg {
   background-image: url(img/weather.jpg);
@@ -807,6 +804,7 @@ section {
   width: 95%;
   border-top: 1px solid rgba(0, 0, 0, 0.5);
   display: flex;
+  justify-content: space-between;
   padding: 20px 0;
   position: absolute;
   left: 50%;
@@ -817,11 +815,7 @@ section {
 .contact-bottom span {
   font-weight: normal;
 }
-.contact-bottom .bottom-left {
-  width: 50%;
-}
 .contact-bottom .bottom-right {
-  width: 50%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -961,7 +955,6 @@ section {
     transform: none;
   }
   #clone-wrap .title h2 {
-    font-size: clamp(40px, 11vw, 180px);
     letter-spacing: -0.08em;
     line-height: 0.9;
   }
@@ -984,7 +977,6 @@ section {
     transform: none;
   }
   #design-wrap .title h2 {
-    font-size: clamp(40px, 11vw, 180px);
     letter-spacing: -0.08em;
     line-height: 0.9;
   }
@@ -1014,6 +1006,9 @@ section {
   }
 
   /* playground /////////////////////////////////////////////////// */
+  #playground .play-item {
+    width: 90%;
+  }
 
   /* contact /////////////////////////////////////////////////// */
 
@@ -1061,17 +1056,60 @@ section {
     background: none;
   }
 
-  #about .photo-center {
-    margin: 0 auto 6rem;
-  }
-
   /* design /////////////////////////////////////////////////// */
+  .design-page .p {
+    font-size: 1.6rem;
+  }
   .info-container {
     flex-direction: column;
-    gap: 5rem;
   }
 
   /* playground /////////////////////////////////////////////////// */
+  #playground .big-text-box {
+    justify-content: center;
+    gap: 20rem;
+  }
+  #playground .small-text-box {
+    width: 50%;
+    font-size: 1.6rem;
+    line-height: 1.5;
+  }
+  #playground .play-item {
+    max-width: 300px;
+    height: 420px;
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%) !important;
+    display: block;
+    pointer-events: auto;
+    opacity: 1;
+  }
+  #playground .play-item li {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 0.5s;
+  }
+  #playground .play-item li:first-child {
+    z-index: 1;
+    transform: rotate(-8deg);
+    width: 92%;
+    height: 92%;
+  }
+
+  #playground .play-item li:last-child {
+    z-index: 2;
+    transform: rotate(8deg);
+  }
+  #playground .play-item li:hover {
+    transform: translateY(-10px) rotate(0deg);
+
+    z-index: 10;
+  }
 
   /* contact /////////////////////////////////////////////////// */
 
@@ -1114,6 +1152,10 @@ section {
   #hero nav ul {
     font-size: 1.6rem;
   }
+  /* about /////////////////////////////////////////////////// */
+  #about {
+    padding: 6rem 0;
+  }
   /* clone /////////////////////////////////////////////////// */
   #clone-wrap button a {
     font-size: 1.5rem;
@@ -1144,6 +1186,8 @@ section {
   .project-info button a {
     font-size: 1.5rem;
   }
+  /* playground /////////////////////////////////////////////////// */
+
   /* contact /////////////////////////////////////////////////// */
   .contact-center .thank {
     font-size: 2rem;
@@ -1153,11 +1197,7 @@ section {
   .contact-bottom {
     font-size: 1.4rem;
   }
-  .contact-bottom .bottom-left {
-    width: 20%;
-  }
   .contact-bottom .bottom-right {
-    width: 80%;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;

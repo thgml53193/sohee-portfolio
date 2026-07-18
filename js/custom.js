@@ -205,13 +205,14 @@ setInterval(function () {
   $(".active .img-wrap li").eq(i).fadeIn();
 }, 2000);
 
-// 자바스크립트 텍스트가 중앙에서 제자리로
+// 플레이그라운드 페이지 자바스크립트 텍스트가 중앙에서 제자리로
 const isMobile = () => window.innerWidth <= 768;
+
 const jsText = gsap.timeline({
   scrollTrigger: {
     trigger: "#playground",
     start: "top top",
-    end: () => (isMobile() ? "+=200%" : "+=300%"),
+    end: () => (isMobile() ? "+=2000" : "+=300%"),
     pin: true,
     scrub: 1,
   },
@@ -219,7 +220,7 @@ const jsText = gsap.timeline({
 
 jsText
   .from(".big-text-box .java", {
-    y: () => (isMobile() ? "-20vh" : "-40vh"),
+    y: () => (isMobile() ? "20vh" : "40vh"),
     letterSpacing: "0.2em",
     opacity: 0,
     duration: 1,
@@ -227,7 +228,7 @@ jsText
   .from(
     ".big-text-box .script",
     {
-      y: () => (isMobile() ? "20vh" : "40vh"),
+      y: () => (isMobile() ? "-20vh" : "-40vh"),
       letterSpacing: "0.2em",
       opacity: 0,
       duration: 1,
@@ -237,23 +238,62 @@ jsText
   .from(".small-text-box", {
     opacity: 0,
     duration: 2,
-  })
-  .to(
+  });
+const mm = gsap.matchMedia();
+
+mm.add("(min-width: 769px)", () => {
+  jsText.to(
     "#playground .play-item",
     {
-      scale: 1, // 약간 작았다가 커지면서 (원근감)
-      rotationX: () => (isMobile() ? 0 : 15), // 살짝 뒤로 누웠다가 세워지는 느낌 (입체감)
-      opacity: 1, // 서서히 나타남
+      scale: 1,
+      rotationX: 15,
+      opacity: 1,
       duration: 2,
       ease: "power2.out",
-      stagger: 0.5, // 여러 카드라면 순차적으로 등장
+
       onStart: () => {
-        // 애니메이션 시작 시 클릭 가능하게 변경 (선택사항)
-        gsap.set("#playground .play-item", { pointerEvents: "auto" });
+        gsap.set("#playground .play-item", {
+          pointerEvents: "auto",
+        });
       },
     },
     "-=1",
   );
+});
+
+mm.add("(max-width: 768px)", () => {
+  gsap.set("#playground .play-item", {
+    opacity: 1,
+    pointerEvents: "auto",
+  });
+
+  const items = gsap.utils.toArray("#playground .play-item li");
+
+  items.forEach((item, i) => {
+    jsText.fromTo(
+      item,
+
+      {
+        y: 150,
+        opacity: 0,
+        rotation: i === 0 ? -18 : 18,
+        scale: 0.9,
+      },
+
+      {
+        y: 0,
+        opacity: 1,
+        rotation: i === 0 ? -8 : 8,
+        scale: 1,
+
+        duration: 0.9,
+        ease: "power3.out",
+      },
+
+      "-=0.2",
+    );
+  });
+});
 
 //gsap - contact 텍스트 변경
 const textItems = ["contact ↗", "감사합니다 ↗"];
