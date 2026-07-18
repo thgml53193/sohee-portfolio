@@ -1011,8 +1011,6 @@ section {
   }
 
   /* contact /////////////////////////////////////////////////// */
-
-  /* contact-center */
   .contact-center {
     width: 90%;
     position: absolute;
@@ -1046,17 +1044,30 @@ section {
 
 /* 모바일버전 max-width: 768px */
 @media (max-width: 768px) {
+  section {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
   /* about /////////////////////////////////////////////////// */
   #about {
-    padding: rem 0;
+    padding: 5rem 0;
   }
   #about .detail {
     width: 100%;
     position: relative;
     background: none;
   }
-
+  /* clone /////////////////////////////////////////////////// */
+  #clone-wrap {
+    height: 100vh;
+    overflow: hidden;
+  }
   /* design /////////////////////////////////////////////////// */
+  #design-wrap {
+    height: 100vh;
+    overflow: hidden;
+  }
   .design-page .p {
     font-size: 1.6rem;
   }
@@ -1065,6 +1076,10 @@ section {
   }
 
   /* playground /////////////////////////////////////////////////// */
+  #playground {
+    height: 100vh;
+    overflow: hidden;
+  }
   #playground .big-text-box {
     justify-content: center;
     gap: 20rem;
