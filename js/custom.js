@@ -1,7 +1,9 @@
+// 페이지가 열리자마자 EmailJS를 초기화하는 코드
 (function () {
   emailjs.init("nFY4hzUqykdzXFOMY");
 })();
 
+//  gsap - 히어로 영역
 const heroTl = gsap.timeline();
 
 heroTl
@@ -30,19 +32,15 @@ heroTl
       ease: "power1.out",
     },
     "-=0.4",
-  )
-  // 완벽한 클릭 버그 방지: 투명해진 마스크를 완전히 없애기
-  .to(".intro-mask", {
-    display: "none",
-    duration: 0,
-  });
+  );
 
 // gsap - 클론 영역 스크롤 시 타이틀, clone01, clone02 아래 -> 위 방향으로 올라옴
 const clone = gsap.timeline({
   scrollTrigger: {
     trigger: "#clone-wrap",
     start: "top top",
-    end: () => (window.innerWidth <= 768 ? "+=800%" : "+=600%"),
+    end: () =>
+      window.matchMedia("(max-width: 768px)").matches ? "+=800%" : "+=600%",
     pin: true,
     scrub: 2,
     anticipatePin: 1, // 핀이 풀릴 때의 움직임을 미리 계산해서 부드럽게 만들어줌
@@ -69,13 +67,13 @@ clone
       opacity: 0,
       duration: 1.2,
       ease: "power2.out",
-
+      // 위에 애니메이션이 끝나면 실행
       onComplete: () => {
-        setTimeout(() => {
+        gsap.delayedCall(0.8, () => {
           document
             .querySelector(".clone01 .preview-box")
             .classList.add("active");
-        }, 800);
+        });
       },
     },
     "-=0.8",
@@ -94,11 +92,11 @@ clone
       ease: "power2.out",
 
       onComplete: () => {
-        setTimeout(() => {
+        gsap.delayedCall(0.8, () => {
           document
             .querySelector(".clone02 .preview-box")
             .classList.add("active");
-        }, 800);
+        });
       },
     },
     "-=0.8",
@@ -110,7 +108,8 @@ const design = gsap.timeline({
   scrollTrigger: {
     trigger: "#design-wrap",
     start: "top top",
-    end: () => (window.innerWidth <= 768 ? "+=700%" : "+=600%"),
+    end: () =>
+      window.matchMedia("(max-width: 768px)").matches ? "+=700%" : "+=600%",
     pin: true,
     scrub: 2,
     anticipatePin: 1, // 핀이 풀릴 때의 움직임을 미리 계산해서 부드럽게 만들어줌
@@ -122,7 +121,7 @@ design
   // 디자인 메인 타이틀 올라옴
   .from("#design-wrap .line-mask > span", {
     yPercent: 100,
-    duration: 1,
+    duration: 1.5,
     ease: "power3.out",
     stagger: 0.2,
   })
@@ -135,7 +134,6 @@ design
       yPercent: -100,
       duration: 2,
       ease: "linear",
-      // immediateRender: false,
     },
     "+=1",
   )
@@ -164,56 +162,62 @@ design
 
 // 디자인 페이지에 카드 클릭했을 때 풀스크린으로 열리고 닫힘
 const cards = document.querySelectorAll(".card-box > div");
+let i = 0;
 
 cards.forEach((card) => {
   card.addEventListener("click", () => {
     // 이미 active 상태면 제거
     if (card.classList.contains("active")) {
       card.classList.remove("active");
+
+      i = 0;
     }
 
     // active 없으면 추가
     else {
-      // 다른 카드 active 제거
       cards.forEach((c) => {
         c.classList.remove("active");
       });
 
-      // 클릭 카드 active 추가
       card.classList.add("active");
+
+      i = 0;
+
+      const imgs = $(card).find(".img-wrap li");
+
+      imgs.hide();
+
+      imgs.eq(0).stop().fadeIn(500);
     }
   });
 });
-window.addEventListener("load", () => {
-  const previewBoxes = document.querySelectorAll(".preview-box");
-  previewBoxes.forEach((box) => {
-    box.classList.remove("active"); // 혹시 남아있을지 모를 active 클래스 초기화
-  });
-});
 
-// 카드 박스에서 사진 페이드 인아웃
-let total = 4;
-console.log(total);
-let i = 0;
-
+// 카드 박스 사진 페이드 인아웃
 setInterval(function () {
-  if (i === total - 1) {
+  const activeImg = $(".active .img-wrap li");
+
+  if (!activeImg.length) return;
+
+  if (i === activeImg.length - 1) {
     i = 0;
   } else {
     i++;
   }
-  $(".active .img-wrap li").fadeOut();
-  $(".active .img-wrap li").eq(i).fadeIn();
+
+  activeImg.eq(i).stop().fadeIn(1200).siblings().stop().fadeOut(1200);
 }, 2000);
 
 // 플레이그라운드 페이지 자바스크립트 텍스트가 중앙에서 제자리로
+
+//화면 크기 체크 함수
 const isMobile = () => window.innerWidth <= 768;
 
 const jsText = gsap.timeline({
   scrollTrigger: {
     trigger: "#playground",
     start: "top top",
-    end: () => (isMobile() ? "+=300%" : "+=300%"),
+    end: () =>
+      window.matchMedia("(max-width:768px)").matches ? "+=400%" : "+=300%",
     pin: true,
     scrub: 1,
   },
@@ -240,6 +244,7 @@ jsText
     opacity: 0,
     duration: 2,
   });
+
 const mm = gsap.matchMedia();
 
 mm.add("(min-width: 769px)", () => {
@@ -270,21 +275,21 @@ mm.add("(max-width: 768px)", () => {
 
   const items = gsap.utils.toArray("#playground .play-item li");
 
-  items.forEach((item, i) => {
+  items.forEach((item, index) => {
     jsText.fromTo(
       item,
 
       {
         y: 150,
         opacity: 0,
-        rotation: i === 0 ? -18 : 18,
+        rotation: index === 0 ? -18 : 18,
         scale: 0.9,
       },
 
       {
         y: 0,
         opacity: 1,
-        rotation: i === 0 ? -8 : 8,
+        rotation: index === 0 ? -8 : 8,
         scale: 1,
 
         duration: 0.9,
@@ -320,9 +325,10 @@ function changeText() {
     },
   });
 }
-
 // 2.5초마다 실행
-setInterval(changeText, 2500);
+setTimeout(() => {
+  setInterval(changeText, 2500);
+}, 3000);
 
 // modal
 const modal = document.querySelector(".contact-modal");
@@ -366,11 +372,15 @@ contactForm.addEventListener("submit", function (e) {
   );
 });
 
+// resize 이벤트가 끝났는지 확인하기 위한 타이머 저장 공간
 let resizeTimer;
 
+// 브라우저 창 크기가 바뀔 때 실행
 window.addEventListener("resize", () => {
+  // 기존에 걸려있던 타이머를 삭제
   clearTimeout(resizeTimer);
 
+  // resize 이벤트가 끝난 후 0.3초 뒤에 실행
   resizeTimer = setTimeout(() => {
     ScrollTrigger.refresh();
   }, 300);
