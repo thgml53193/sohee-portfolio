@@ -1094,8 +1094,10 @@ section {
   }
   #design-wrap .design-page {
     min-height: 100dvh; /* 수정 */
-    top: 0;
-    transform: translateY(100%);
+    /* top: 0;
+    transform: translateY(100%); */
+    top: 100%;
+    transform: none;
   }
   .design-page .p {
     font-size: 1.6rem;
