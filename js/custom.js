@@ -44,6 +44,7 @@ const clone = gsap.timeline({
     pin: true,
     scrub: 2,
     anticipatePin: 1, // 핀이 풀릴 때의 움직임을 미리 계산해서 부드럽게 만들어줌
+    invalidateOnRefresh: true,
   },
 });
 
@@ -372,16 +373,14 @@ contactForm.addEventListener("submit", function (e) {
   );
 });
 
-// resize 이벤트가 끝났는지 확인하기 위한 타이머 저장 공간
-let resizeTimer;
+window.addEventListener("load", () => {
+  ScrollTrigger.refresh(true);
 
-// 브라우저 창 크기가 바뀔 때 실행
-window.addEventListener("resize", () => {
-  // 기존에 걸려있던 타이머를 삭제
-  clearTimeout(resizeTimer);
+  setTimeout(() => {
+    ScrollTrigger.refresh(true);
+  }, 500);
 
-  // resize 이벤트가 끝난 후 0.3초 뒤에 실행
-  resizeTimer = setTimeout(() => {
-    ScrollTrigger.refresh();
-  }, 300);
+  setTimeout(() => {
+    ScrollTrigger.refresh(true);
+  }, 1000);
 });
