@@ -110,10 +110,11 @@ const design = gsap.timeline({
   scrollTrigger: {
     trigger: "#design-wrap",
     start: "top top",
-    end: () => (window.innerWidth <= 768 ? "+=450%" : "+=600%"),
+    end: () => (window.innerWidth <= 768 ? "+=700%" : "+=600%"),
     pin: true,
     scrub: 2,
     anticipatePin: 1, // 핀이 풀릴 때의 움직임을 미리 계산해서 부드럽게 만들어줌
+    invalidateOnRefresh: true,
   },
 });
 
@@ -131,12 +132,12 @@ design
   .to(
     ".design-page",
     {
-      top: 0,
+      yPercent: -100,
       duration: 2,
       ease: "linear",
-      immediateRender: false,
+      // immediateRender: false,
     },
-    "+=2",
+    "+=1",
   )
 
   // 디자인 페이지 서브 타이틀 올라옴
