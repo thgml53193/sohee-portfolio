@@ -43,7 +43,7 @@ gsap.to(".content-wrapper > *", {
   ease: "power2.out",
   scrollTrigger: {
     trigger: "#about", // #about 섹션에 진입했을 때 실행
-    start: "top 50%",
+    start: "top 20%",
   },
 });
 
