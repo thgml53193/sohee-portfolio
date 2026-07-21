@@ -3,7 +3,7 @@
   emailjs.init("nFY4hzUqykdzXFOMY");
 })();
 
-//  gsap - 히어로 영역
+// gsap - 히어로 영역
 const heroTl = gsap.timeline();
 
 heroTl
@@ -33,6 +33,19 @@ heroTl
     },
     "-=0.4",
   );
+
+// 어바웃 텍스트 등장 효과
+gsap.to(".content-wrapper > *", {
+  y: 0,
+  opacity: 1,
+  duration: 1,
+  stagger: 0.2,
+  ease: "power2.out",
+  scrollTrigger: {
+    trigger: "#about", // #about 섹션에 진입했을 때 실행
+    start: "top 50%",
+  },
+});
 
 // gsap - 클론 영역 스크롤 시 타이틀, clone01, clone02 아래 -> 위 방향으로 올라옴
 const clone = gsap.timeline({

@@ -127,14 +127,30 @@ section {
   background-color: #f2f2eb;
 }
 
+/* 중앙 이미지 */
+#about .photo-center {
+  width: 250px;
+  aspect-ratio: 3/4;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+#about .photo-center img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 #about .content-wrapper {
   width: 70%;
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 55%;
   transform: translate(-50%, -50%);
   font-size: 1.6rem;
-  border: 1px solid red;
+  padding-left: 4rem;
 }
 
 /* 개인정보 */
@@ -142,7 +158,6 @@ section {
   display: flex;
   margin-bottom: 1.4rem;
 }
-
 #about .info-item dt {
   width: 100px;
   flex-shrink: 0;
@@ -155,13 +170,11 @@ section {
   margin-bottom: 1rem;
   font-size: 2rem;
 }
-
 #about .intro-section .hash-tags {
   font-size: 1.4rem;
   color: #555;
   margin-bottom: 0.8rem;
 }
-
 #about .intro-section p {
   line-height: 1.7;
 }
@@ -172,7 +185,6 @@ section {
   gap: 5rem;
   margin-top: 4rem;
 }
-
 #about .skill-cert-wrap h3 {
   margin-top: 0;
   font-size: 2rem;
@@ -180,30 +192,15 @@ section {
   display: inline-block;
   padding-bottom: 0.2rem;
 }
-
 #about .skill-cert-wrap ul li {
   margin-bottom: 0.6rem;
   color: #333;
 }
-
-/* 중앙 이미지 */
-#about .photo-center {
-  width: 250px;
-  height: auto;
-  aspect-ratio: 3/4;
-  position: absolute;
-  left: -125px;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+.content-wrapper > * {
+  opacity: 0;
+  transform: translateY(50px);
 }
 
-#about .photo-center img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 /* clone /////////////////////////////////////////////////// */
 #clone-wrap {
   width: 100%;
@@ -958,6 +955,7 @@ section {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    padding-left: 0;
   }
   #about .photo-center {
     width: 100%;
