@@ -307,7 +307,8 @@ section {
   transition: 0.3s;
   z-index: 10;
   font-size: 1.8rem;
-  text-decoration: none; /* a 태그 기본 밑줄 제거 */
+  text-decoration: none;
+  color: #222;
 }
 #clone-wrap .clone-btn i {
   transform: rotate(-45deg);
@@ -587,6 +588,7 @@ section {
   box-sizing: border-box;
   transition: 0.3s;
   z-index: 10;
+  color: #222;
 }
 .project-info .project-btn i {
   transform: rotate(-45deg);
