@@ -291,36 +291,33 @@ section {
   transition: transform 10s linear;
 }
 
-#clone-wrap button {
+#clone-wrap .clone-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 150px;
   height: 50px;
+  padding: 0 2rem;
   border: none;
   background-color: #fb5842;
-  /* color: #fff; */
   border-radius: 50px;
   position: absolute;
   right: 0;
   bottom: 0;
   transition: 0.3s;
   z-index: 10;
-}
-#clone-wrap button a {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 0 2rem;
   font-size: 1.8rem;
+  text-decoration: none; /* a 태그 기본 밑줄 제거 */
 }
-#clone-wrap button i {
+#clone-wrap .clone-btn i {
   transform: rotate(-45deg);
   transition: 0.3s;
 }
-#clone-wrap button:hover {
+#clone-wrap .clone-btn:hover {
   background-color: #f2f2eb;
   color: #fb5842;
 }
-#clone-wrap button:hover i {
+#clone-wrap .clone-btn:hover i {
   transform: rotate(0deg);
   color: #fb5842;
 }
@@ -577,52 +574,50 @@ section {
   align-items: center;
   gap: 1.5rem;
 }
-.project-info button {
+.project-info .project-btn {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
   width: 140px;
   height: 50px;
-  border: none;
+  padding: 0 2rem;
   border-radius: 50px;
+  font-size: 1.8rem;
+  text-decoration: none; /* 밑줄 제거 */
+  box-sizing: border-box;
   transition: 0.3s;
   z-index: 10;
 }
-.project-info button a {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 0 2rem;
-  font-size: 1.8rem;
-}
-.project-info button i {
+.project-info .project-btn i {
   transform: rotate(-45deg);
   transition: 0.3s;
 }
-.project-info button.btn-secondary {
+.project-info .project-btn:hover i {
+  transform: rotate(0deg);
+}
+.project-info .project-btn.btn-secondary {
   background-color: transparent;
   color: #555555;
   border: 1px solid #cccccc;
 }
-.project-info button.btn-secondary:hover {
+.project-info .project-btn.btn-secondary:hover {
   background-color: #ffffff;
   border-color: #222222;
 }
-.project-info button:hover i {
-  transform: rotate(0deg);
-}
 /* 카페 페이지 버튼 호버(버터옐로우) */
-.project-info button.cafe {
+.project-info .project-btn.cafe {
   background-color: #fdfbdd;
   border: 1px solid #eae7cc;
 }
-.project-info button.cafe:hover {
+.project-info .project-btn.cafe:hover {
   background-color: #f7f3c5;
 }
-.project-info button.foundation {
+.project-info .project-btn.foundation {
   background-color: #f38b5e;
   border: 1px solid #f38b5e;
   color: #ffffff;
 }
-.project-info button.foundation:hover {
+.project-info .project-btn.foundation:hover {
   background-color: #e07548;
   border-color: #e07548;
 }
@@ -1065,13 +1060,11 @@ section {
     top: 100%;
     transform: none;
   }
-  #clone-wrap button {
+  #clone-wrap .clone-btn {
     width: 130px;
     height: 46px;
     right: 50%;
     transform: translateX(50%);
-  }
-  #clone-wrap button a {
     font-size: 1.6rem;
   }
   #clone-wrap .clone02 {
@@ -1111,11 +1104,9 @@ section {
     margin: 0 auto;
     flex-direction: column;
   }
-  .project-info button {
+  .project-info .project-btn {
     width: 130px;
     height: 46px;
-  }
-  .project-info button a {
     font-size: 1.6rem;
   }
   .img-wrap {
@@ -1191,11 +1182,9 @@ section {
     padding: 4rem 0;
   }
   /* clone /////////////////////////////////////////////////// */
-  #clone-wrap button {
+  #clone-wrap .clone-btn {
     width: 120px;
     height: 44px;
-  }
-  #clone-wrap button a {
     font-size: 1.5rem;
   }
   /* design /////////////////////////////////////////////////// */
@@ -1221,11 +1210,9 @@ section {
   .project-info .spec-item dt {
     width: 70px;
   }
-  .project-info button {
+  .project-info .project-btn {
     width: 120px;
     height: 44px;
-  }
-  .project-info button a {
     font-size: 1.5rem;
   }
   /* contact /////////////////////////////////////////////////// */
